@@ -54,6 +54,14 @@ return [
             'visibility' => 'public',
         ],
 
+        'sysdata' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/sysdata'),
+            'visibility' => 'public',
+            'url' => env('APP_URL').'/sysdata'
+        ],
+
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',

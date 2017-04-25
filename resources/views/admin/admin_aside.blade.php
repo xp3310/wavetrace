@@ -29,41 +29,40 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        {{ $listItem = array() }}
         <li class="active">
             <a href="#">
                 <i class="fa fa-link"></i>
-                <span>{{ trans('admin_home') }}</span>
+                <span>{{ trans('admin.home') }}</span>
             </a>
         </li>
         <li class="active">
             <a href="#">
                 <i class="fa fa-link"></i>
-                <span>{{ trans('admin_home') }}</span>
+                <span>{{ trans('admin.home') }}</span>
             </a>
         </li>
         <li class="active">
             <a href="#">
                 <i class="fa fa-link"></i>
-                <span>{{ trans('admin_home') }}</span>
+                <span>{{ trans('admin.home') }}</span>
             </a>
         </li>
         <li class="active">
             <a href="#">
                 <i class="fa fa-link"></i>
-                <span>{{ trans('admin_home') }}</span>
+                <span>{{ trans('admin.home') }}</span>
             </a>
         </li>
         <li class="active">
             <a href="#">
                 <i class="fa fa-link"></i>
-                <span>{{ trans('admin_home') }}</span>
+                <span>{{ trans('admin.home') }}</span>
             </a>
         </li>
         <li class="active">
             <a href="#">
                 <i class="fa fa-link"></i>
-                <span>{{ trans('admin_home') }}</span>
+                <span>{{ trans('admin.home') }}</span>
             </a>
         </li>
 

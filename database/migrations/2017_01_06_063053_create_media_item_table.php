@@ -13,6 +13,7 @@ class CreateMediaItemTable extends Migration {
 			$table->integer('media_id');
 			$table->string('title', 64);
 			$table->text('description');
+			$table->string('file_origin_name', 255);
 			$table->string('file_name', 255);
 			$table->string('file_type', 16);
 			$table->integer('sn');
