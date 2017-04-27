@@ -22,8 +22,8 @@ elixir(mix => {
             loaders: [
                 {
                     test: /\.css$/,
-                    loader: 'style!css'
-                }
+                    loader: 'style-loader!css-loader'
+                  }
             ]
         }
     });

@@ -15,7 +15,5 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-default/index.css';
-const app = new Vue({
-    el: '#app'
-});
+
+Vue.use(ElementUI);

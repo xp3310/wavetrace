@@ -57,6 +57,7 @@ class MediaController extends Controller
         $mediaItemMaxSn = MediaItem::where('media_id', $mediaId)->max('sn');
         $files = $request->file('media');
         // Log::info($request->hasFile('media'));
+Log::info($files);
 
         $createMediaItem =  array();
         $imgFile = array();
@@ -85,7 +86,7 @@ class MediaController extends Controller
                 ];
             }
         }
-
+Log::info($imgFile);
         ignore_user_abort(true);
         set_time_limit(0);
 
