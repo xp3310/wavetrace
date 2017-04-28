@@ -11,6 +11,8 @@ use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+use Redirect;
+
 
 
 class MediaController extends Controller
@@ -27,6 +29,23 @@ class MediaController extends Controller
     {
         return view('admin.admin_homeInfo');
     }
+
+    public function create() {
+        $hasPermission = TRUE;
+        if ($hasPermission) {
+
+            $folderName = md5(md5(uniqid()));
+            $folderPath = storage_path('app/public/sysdata/media/') . "{$folderName}";
+            @mkdir($folderPath);
+
+            $media = new Media();
+            $media->path = $folderName;
+            $media->save();
+
+            return Redirect::route('media.edit', array($media->id));
+        }
+    }
+
     public function edit($mediaId) {
         $media = Media::where('id', $mediaId)->first();
         $mediaItem = MediaItem::where('media_id', $mediaId)
@@ -34,11 +53,11 @@ class MediaController extends Controller
                                 ->get();
         $ret = array();
         foreach ($mediaItem as $item) {
-            $url = Storage::url( "sysdata/{$media->path}/thumb/{$item->file_name}_s.png" );
+            $url = Storage::url( "sysdata/media/{$media->path}/thumb/{$item->file_name}_s.png" );
 
             $ret[] = array('id' => $item->id,
                            'name' => $item->file_name,
-                           'deleteUrl' => action('MediaItemController@delete', ['id' => $item->id]),
+                           'deleteUrl' => route('media_item.destroy', [$item->id]),
                            'src' => $url);
         }
 
@@ -57,13 +76,12 @@ class MediaController extends Controller
         $mediaItemMaxSn = MediaItem::where('media_id', $mediaId)->max('sn');
         $files = $request->file('media');
         // Log::info($request->hasFile('media'));
-Log::info($files);
 
         $createMediaItem =  array();
         $imgFile = array();
         foreach ($files as $file) {
             $uniqName = substr( md5(uniqid()) , 0, 4).date('s');
-            $storePath = storage_path('app/public/sysdata/').$file->storeAs("{$media['path']}", "{$uniqName}.{$file->guessExtension()}", 'sysdata');
+            $storePath = storage_path('app/public/sysdata/').$file->storeAs("media/{$media['path']}", "{$uniqName}.{$file->guessExtension()}", 'sysdata');
 
 
 
@@ -79,14 +97,13 @@ Log::info($files);
 
 
             if(substr($file->getMimeType(), 0, 5) == 'image') {
-                $imgFile[] = ['folder' => storage_path('app/public/sysdata/') . $media['path'],
+                $imgFile[] = ['folder' => storage_path('app/public/sysdata/media/') . $media['path'],
 
                               'filename' => $uniqName,
                               'ext' => $file->guessExtension()
                 ];
             }
         }
-Log::info($imgFile);
         ignore_user_abort(true);
         set_time_limit(0);
 

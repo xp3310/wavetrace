@@ -60,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div>
                         <draggable class='gridArea'  v-model="myArray" :move="getdata" @update="datadragEnd" >
                             <div :data-id="element.id" class='gridItem' v-for="(element, key) in myArray">
-                                <span v-on:click='deleteItem(key, element.deleteUrl, $event)' :data-url="element.deleteUrl" class='deleteBtn'>
+                                <span v-on:click='deleteItem(key, element.deleteUrl, element.id, $event)' :data-url="element.deleteUrl" class='deleteBtn'>
                                     <i class="el-icon-circle-cross"></i>
                                 </span>
                                 <img :src="element.src" />
@@ -103,8 +103,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 console.log(evt);
                             },
 
-                            deleteItem: function(key, deleteUrl, evt){
-                                this.$http.post(deleteUrl, { _token:'{{ csrf_token() }}'}).then(function(ret){
+                            deleteItem: function(key, deleteUrl, id, evt){
+                                this.$http.delete(deleteUrl, {_token:'{{ csrf_token() }}'}).then(function(ret){
 console.log(ret.json());
                                 // this.$delete(element);
                                 this.myArray.splice(key, 1);

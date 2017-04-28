@@ -9,11 +9,10 @@ class CreateMediaTable extends Migration {
 	{
 		Schema::create('media', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('title', 64);
-			$table->string('allow_type', 128);
-			$table->boolean('sortable');
+			$table->string('title', 64)->nullable();;
+			$table->string('allow_type', 128)->nullable();;
+			$table->boolean('sortable')->default(1);
 			$table->string('path');
-			$table->datetime('create_time');
 			$table->timestamps();
 		});
 	}

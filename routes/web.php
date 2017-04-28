@@ -16,7 +16,18 @@ Route::get('/', function () {
 });
 Route::get('admin/home', 'AdminController@home');
 Route::get('admin/show', 'AdminController@show');
-Route::get('media/edit/{id}', 'MediaController@edit');
+
+
+Route::resource('media', 'MediaController');
+Route::resource('media_item', 'MediaItemController');
+
+
+
+
+
+
 Route::post('media/upload/{id}', 'MediaController@upload');
+
+
+
 Route::post('mediaItem/move', 'MediaItemController@move');
-Route::post('mediaItem/delete/{id}', 'MediaItemController@delete');

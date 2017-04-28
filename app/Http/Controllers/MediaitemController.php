@@ -24,7 +24,7 @@ class MediaitemController extends Controller
 
 // page route
 
-    public function delete($id) {
+    public function destroy(Request $request, $id) {
         $mediaItem = MediaItem::where('id', $id)->first();
         $media = Media::where('id', $mediaItem['media_id'])->first();
 
@@ -37,7 +37,7 @@ class MediaitemController extends Controller
 
         MediaItem::where('id', $id)->delete();
         MediaItem::reorder($media->id);
-        echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
+        // echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
     }
 
 
