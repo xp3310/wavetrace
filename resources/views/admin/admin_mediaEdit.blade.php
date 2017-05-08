@@ -104,10 +104,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             },
 
                             deleteItem: function(key, deleteUrl, id, evt){
-                                this.$http.delete(deleteUrl, {_token:'{{ csrf_token() }}'}).then(function(ret){
-console.log(ret.json());
-                                // this.$delete(element);
-                                this.myArray.splice(key, 1);
+                                this.$http.delete(deleteUrl, { headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' } }).then(function(ret){
+                                    this.myArray.splice(key, 1);
                                 });
                             },
 
