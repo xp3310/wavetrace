@@ -40,6 +40,11 @@ class MediaitemController extends Controller
         // echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
     }
 
+    public function edit($id) {
+        return view('admin.admin_mediaItemEdit', []);
+        // echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
+    }
+
 
     public function move(Request $request)
     {
