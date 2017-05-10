@@ -46,9 +46,9 @@ class MediaController extends Controller
         }
     }
 
-    public function edit($mediaId) {
-        $media = Media::where('id', $mediaId)->first();
-        $mediaItem = MediaItem::where('media_id', $mediaId)
+    public function edit($id) {
+        $media = Media::where('id', $id)->first();
+        $mediaItem = MediaItem::where('media_id', $id)
                                 ->orderBy('sn', 'asc')
                                 ->get();
         $ret = array();
@@ -58,10 +58,11 @@ class MediaController extends Controller
             $ret[] = array('id' => $item->id,
                            'name' => $item->file_name,
                            'deleteUrl' => route('media_item.destroy', [$item->id]),
+                           'editUrl' => route('media_item.edit', [$item->id]),
                            'src' => $url);
         }
 
-        return view('admin.admin_mediaEdit', ['ret' => $ret, 'mediaId' => $mediaId]);
+        return view('admin.admin_mediaEdit', ['ret' => $ret, 'mediaId' => $id]);
     }
 
     public function delete($id) {
@@ -104,17 +105,18 @@ class MediaController extends Controller
                 ];
             }
         }
+        MediaItem::insert($createMediaItem);
+echo json_encode([ 'status'=>'true', 'msg' => 'ok' ]);
         ignore_user_abort(true);
         set_time_limit(0);
 
         $this->resizeImgs($imgFile);
-        MediaItem::insert($createMediaItem);
     }
 
     private function resizeImgs($files = array(), $sizes=array()) {
         $defaultSize = ['l' => [1920, 1080],
                         'm' => [1280, 720],
-                        's' => [640, 360]
+                        's' => [320, 180]
         ];
 
         $sizes = array_merge($defaultSize, $sizes);
@@ -131,9 +133,5 @@ class MediaController extends Controller
         }
 
     }
-
-    // private function createMediaItem($mediaId, $files) {
-    //     foreach ($files)
-    // }
 
 }

@@ -22,8 +22,6 @@ class MediaitemController extends Controller
      * @return Response
      */
 
-// page route
-
     public function destroy(Request $request, $id) {
         $mediaItem = MediaItem::where('id', $id)->first();
         $media = Media::where('id', $mediaItem['media_id'])->first();
@@ -37,12 +35,20 @@ class MediaitemController extends Controller
 
         MediaItem::where('id', $id)->delete();
         MediaItem::reorder($media->id);
-        // echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
+
+        echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
     }
 
     public function edit($id) {
-        return view('admin.admin_mediaItemEdit', []);
-        // echo json_encode(['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
+        $mediaItem = MediaItem::where('id', $id)->first();
+        return view('admin.admin_mediaItemEdit', ['mediaItem' => $mediaItem,
+                                                  'updateUrl' => route('media_item.update', [$id]),
+                                                  'redirUrl' => route('media.edit', [$mediaItem->media_id])]);
+    }
+
+    public function update(Request $request, $id) {
+        MediaItem::where('id', $id)->update($request->all());
+        echo json_encode( ['status' => 'truee', 'msg' => 'ok', 'extInfo' => []]);
     }
 
 

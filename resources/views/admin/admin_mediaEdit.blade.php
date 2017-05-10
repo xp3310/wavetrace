@@ -27,6 +27,7 @@
                     :multiple="true"
                     :on-preview="handlePreview"
                     :on-remove="handleRemove"
+                    :on-success="handleSuccess"
                     :file-list="fileList">
                     <el-button size="small" type="primary">点击上传</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -35,11 +36,12 @@
 
 
                 <div>
-                    <draggable class='gridArea'  v-model="myArray" :move="getdata" @update="datadragEnd" >
+                    <draggable class='gridArea'  v-model="myArray" @update="datadragEnd" >
                         <div :data-id="element.id" class='gridItem' v-for="(element, key) in myArray">
-                            <span v-on:click='deleteItem(key, element.deleteUrl, element.id, $event)' :data-url="element.deleteUrl" class='deleteBtn'>
-                                <i class="el-icon-circle-cross"></i>
-                            </span>
+                                <div class='controlPanel'>
+                                    <i class="editBtn el-icon-edit" v-on:click='editItem(key, element.editUrl, element.id, $event)' :data-url="element.deleteUrl" ></i>
+                                    <i class="deleteBtn el-icon-circle-cross" v-on:click='deleteItem(key, element.deleteUrl, element.id, $event)' :data-url="element.deleteUrl" ></i>
+                                </div>
                             <img :src="element.src" />
                         </div>
                     </draggable>
@@ -61,35 +63,39 @@
                             uploadName: 'media[]'
                         },
                         methods:{
-                            datadragEnd:function(evt){
+                            datadragEnd: function(evt) {
+
                                 var newId = this.myArray[evt.newIndex].id,
                                     preIdx = evt.newIndex-1,
                                     preId = (typeof this.myArray[preIdx]) == 'undefined' ? 0 : this.myArray[preIdx].id;
 
 
 
-                                this.$http.post('{{ action('MediaItemController@move') }}', { _token:'{{ csrf_token() }}', itemId: newId, afterId: preId}).then(function(obj){
+                                this.$http.post('{{ action('MediaItemController@move') }}', { _token:'{{ csrf_token() }}', itemId: newId, afterId: preId}).then( function(obj) {
 
                                 }, function(){
                                     alert('somethimg wrong');
                                 });
                             },
 
-                            getdata: function(evt){
-                                console.log(evt);
-                            },
-
-                            deleteItem: function(key, deleteUrl, id, evt){
-                                this.$http.delete(deleteUrl, { headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' } }).then(function(ret){
+                            deleteItem: function(key, deleteUrl, id, evt) {
+                                this.$http.delete(deleteUrl, { headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}' } }).then( function(ret) {
                                     this.myArray.splice(key, 1);
                                 });
                             },
+                            editItem: function(key, editUrl, id, evt) {
+                                window.location.href=editUrl;
+                            },
 
-                            handleRemove(file, fileList) {
+                            handleRemove: function(file, fileList) {
                                 console.log(file, fileList);
                             },
-                            handlePreview(file) {
-                                console.log(file);
+                            handleSuccess: function(response, file, fileList) {
+
+                                if (file.response.status == 'true') {
+                                    window.location.reload();
+                                }
+
                             }
                         }
                     });

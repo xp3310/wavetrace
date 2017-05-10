@@ -2,4 +2,5 @@
 	.adminMediaEdit .gridArea { list-style:none; }
 		.adminMediaEdit .gridArea .gridItem { display:inline-block; position:relative; vertical-align:bottom; width:150px; height:110px; padding:5px; border:1px solid #AAA; }
             .adminMediaEdit .gridArea .gridItem img{ width:100%; }
-		    .adminMediaEdit .gridArea .gridItem .deleteBtn{ position:absolute; right:0; top:0; cursor:pointer; }
+            .adminMediaEdit .gridArea .gridItem .controlPanel{ position:absolute; right:0; top:0; padding:2px; background-color:#FFF; }
+		    .adminMediaEdit .gridArea .gridItem .controlPanel i{ cursor:pointer; }
