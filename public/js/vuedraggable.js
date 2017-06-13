@@ -322,7 +322,5 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   } else if (window && window.Vue && window.Sortable) {
     var draggable = buildDraggable(window.Sortable);
     Vue.component('draggable', draggable);
-console.log('qqqqqqqqqqqqqqqqqqqqqqqqq');
-console.log(draggable);
   }
 })();
