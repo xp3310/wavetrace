@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use App\User;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -17,9 +16,10 @@ class AdminController extends Controller
 
     public function home()
     {
-        return view('admin.admin_homeInfo');
+        return view('admin.index');
+        // return view('admin.admin_homeInfo');
     }
     public function show() {
-        return view('admin.admin_template');
+        return view('admin.index');
     }
 }
