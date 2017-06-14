@@ -25,7 +25,6 @@
                     :data="uploadArg"
                     :name="uploadName"
                     :multiple="true"
-                    :on-preview="handlePreview"
                     :on-remove="handleRemove"
                     :on-success="handleSuccess"
                     :file-list="fileList">
