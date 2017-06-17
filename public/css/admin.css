@@ -8,3 +8,5 @@
 
 
 #siteInfo { width:800px; margin:0 auto; margin-top:25px; }
+    #siteInfo .iconBtn { cursor:pointer; }
+    #siteInfo .iconBtn:hover { opacity:0.8; }
