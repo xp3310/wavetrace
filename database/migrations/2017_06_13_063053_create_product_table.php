@@ -9,12 +9,12 @@ class CreateProductTable extends Migration {
 	{
 		Schema::create('product', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->integer('media_id');
 			$table->integer('type');
 			$table->string('title', 64);
 			$table->text('description');
 			$table->integer('price');
+			$table->timestamps();
 		});
 
 	}

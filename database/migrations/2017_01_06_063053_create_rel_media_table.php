@@ -9,9 +9,9 @@ class CreateRelMediaTable extends Migration {
 	{
 		Schema::create('rel_media', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('name', 32);
 			$table->integer('media_id');
+			$table->timestamps();
 		});
 	}
 

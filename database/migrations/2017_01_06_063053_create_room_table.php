@@ -9,13 +9,13 @@ class CreateRoomTable extends Migration {
 	{
 		Schema::create('room', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->integer('media_id');
 			$table->string('title', 64);
 			$table->text('description');
 			$table->integer('price');
 			$table->integer('max_capicity');
 			$table->integer('more_bed');
+			$table->timestamps();
 		});
 	}
 

@@ -9,9 +9,9 @@ class CreateSysConfigTable extends Migration {
 	{
 		Schema::create('sys_config', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('name', 32);
 			$table->text('value');
+			$table->timestamps();
 		});
 	}
 

@@ -9,7 +9,6 @@ class CreateDiscountTable extends Migration {
 	{
 		Schema::create('discount', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('title', 64);
 			$table->text('description');
 			$table->string('code', 64);
@@ -18,6 +17,7 @@ class CreateDiscountTable extends Migration {
 			$table->integer('remain');
 			$table->datetime('start_time');
 			$table->datetime('end_time');
+			$table->timestamps();
 		});
 	}
 

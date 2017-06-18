@@ -9,7 +9,6 @@ class CreateMediaItemTable extends Migration {
 	{
 		Schema::create('media_item', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->integer('media_id');
 			$table->string('title', 64);
 			$table->text('description');
@@ -17,6 +16,7 @@ class CreateMediaItemTable extends Migration {
 			$table->string('file_name', 255);
 			$table->string('file_type', 16);
 			$table->integer('sn');
+			$table->timestamps();
 		});
 	}
 

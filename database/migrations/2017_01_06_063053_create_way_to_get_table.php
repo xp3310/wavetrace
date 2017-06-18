@@ -9,10 +9,10 @@ class CreateWayToGetTable extends Migration {
 	{
 		Schema::create('way_to_get', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('title', 64);
 			$table->text('description');
 			$table->integer('sn');
+			$table->timestamps();
 		});
 	}
 

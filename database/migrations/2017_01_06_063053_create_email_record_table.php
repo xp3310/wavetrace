@@ -9,12 +9,12 @@ class CreateEmailRecordTable extends Migration {
 	{
 		Schema::create('email_record', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('to', 64);
 			$table->string('from');
 			$table->string('subject', 64);
 			$table->text('body');
 			$table->string('status');
+			$table->timestamps();
 		});
 	}
 
