@@ -9,8 +9,11 @@ return [
     'siteName' => '網站名稱',
     'copyright' => 'copyright',
     'contactInfo' => '聯絡資訊',
+    'contactLabel' => '聯絡項目',
+    'contactContent' => '項目內容',
     'socialInfo' => '社群連結',
     'social_fb' => 'facebook',
     'social_ig' => 'instagram',
-    'social_gplus' => 'google+'
+    'social_gplus' => 'google+',
+    'socialUrl' => '連結網址'
 ];

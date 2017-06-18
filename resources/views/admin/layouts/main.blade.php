@@ -11,7 +11,8 @@
     {!! Html::style( asset('css/app.css') ) !!}
     {!! Html::style( asset('css/AdminLTE.min.css') ) !!}
     {!! Html::style( asset('css/skin-purple-light.min.css') ) !!}
-    {!! Html::style( asset('/css/element-ui/index.css') ) !!}
+    {!! Html::style( asset('css/element-ui/index.css') ) !!}
+    {!! Html::style( asset('css/reset.css') ) !!}
     {!! Html::style( asset('css/admin.css') ) !!}
     @yield('extCss')
 
