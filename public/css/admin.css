@@ -4,3 +4,11 @@
             .adminMediaEdit .gridArea .gridItem img{ width:100%; }
             .adminMediaEdit .gridArea .gridItem .controlPanel{ position:absolute; right:0; top:0; padding:2px; background-color:#FFF; }
 		    .adminMediaEdit .gridArea .gridItem .controlPanel i{ cursor:pointer; }
+
+
+
+#siteInfo { width:800px; margin:0 auto; margin-top:25px; }
+    #siteInfo .iconBtn { cursor:pointer; }
+    #siteInfo .iconBtn:hover { opacity:0.8; }
+
+    #siteInfo .formItem .inputGroupItem { margin-bottom:5px; }

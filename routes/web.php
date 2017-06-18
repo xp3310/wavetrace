@@ -17,18 +17,24 @@ Route::get('/', function () {
 Route::get('admin/', 	 'AdminController@home')->name('admin');
 Route::get('admin/home', 'AdminController@home');
 Route::get('admin/show', 'AdminController@show');
+Route::get('admin/siteInfo', 'AdminController@siteInfo')->name('admin.siteInfo');
 
 
 Route::resource('media', 'MediaController');
 Route::resource('media_item', 'MediaItemController');
-
-
-
-
-
 
 Route::post('media/upload/{id}', 'MediaController@upload');
 
 
 
 Route::post('mediaItem/move', 'MediaItemController@move');
+
+
+
+Route::post('sys_config/updateAll', 'SysConfigController@updateAll');
+
+
+
+
+
+
