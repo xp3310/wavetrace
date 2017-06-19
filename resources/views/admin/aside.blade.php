@@ -1,7 +1,7 @@
 <section class="sidebar">
 
   <ul class="sidebar-menu" data-widget="tree">
-    <!-- <li class="header">{{ trans('admin.orderCustomer') }}</li> -->
+    <li class="header">{{ trans('admin.orderCustomer') }}</li>
     <li class="active treeview">
       <a href="#">
         <i class="fa fa-dashboard"></i> <span>{{ trans('admin.orderCustomer') }}</span>
@@ -10,8 +10,8 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li class="active"><a href="#"><i class="fa fa-circle-o"></i> 訂房狀況</a></li>
-        <li><a href="#"><i class="fa fa-file"></i> 訂單管理</a></li>
+        <li class="active"><a href="#"><i class="fa fa-circle-o"></i> {{ trans('room.status') }} </a></li>
+        <li><a href="#"><i class="fa fa-file"></i> {{ trans('room.orderMgr') }}</a></li>
         <li><a href="#"><i class="fa fa-envelope"></i> 顧客信件</a></li>
       </ul>
     </li>
@@ -23,14 +23,14 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li class=""><a href="#"><i class="fa fa-home"></i> 房型管理</a></li>
+        <li class=""><a href="/room"><i class="fa fa-home"></i> {{ trans('room.typeMgr') }}</a></li>
         <li><a href="#"><i class="fa fa-bicycle"></i> 其他服務、商品</a></li>
         <li><a href="#"><i class="fa fa-money"></i> 優惠方案</a></li>
       </ul>
     </li>
     <li class="active treeview">
       <a href="#">
-        <i class="fa fa-dashboard"></i> <span>網站管理</span>
+        <i class="fa fa-dashboard"></i> <span>{{ trans('admin.siteMgr') }}</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>

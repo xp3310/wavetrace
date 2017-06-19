@@ -1,3 +1,4 @@
+
 .adminMediaEdit {}
 	.adminMediaEdit .gridArea { list-style:none; }
 		.adminMediaEdit .gridArea .gridItem { display:inline-block; position:relative; vertical-align:bottom; width:150px; height:110px; padding:5px; border:1px solid #AAA; }
@@ -12,3 +13,4 @@
     #siteInfo .iconBtn:hover { opacity:0.8; }
 
     #siteInfo .formItem .inputGroupItem { margin-bottom:5px; }
+

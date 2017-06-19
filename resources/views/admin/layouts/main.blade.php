@@ -21,6 +21,7 @@
     {!! Html::script( asset('js/jquery-3.2.1.min.js') ) !!}
     {!! Html::script( asset('js/app.js') ) !!}
     {!! Html::script( asset('js/app.min.js') ) !!}
+    {!! Html::script( asset('js/adminlte.min.js') ) !!}
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -36,7 +37,7 @@
 
         <header class="main-header">@include('admin.layouts.header')</header>
 
-        <aside class="main-sidebar">@include('admin.layouts.aside')</aside>
+        <aside class="main-sidebar">@include('admin.aside')</aside>
 
         <div class="content-wrapper clearfix">
             @yield('content')
