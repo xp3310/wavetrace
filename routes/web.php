@@ -21,7 +21,7 @@ Route::get('admin/show', 'AdminController@show');
 Route::get('admin/siteInfo', 'AdminController@siteInfo')->name('admin.siteInfo');
 
 
-Route::resource('room', 'Admin\RoomController');
+Route::resource('admin/room', 'Admin\RoomController');
 // Route::get('admin/room', 'Admin\RoomController@index')->name('admin.room.index');
 
 

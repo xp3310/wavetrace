@@ -1,11 +1,10 @@
 @extends('admin.layouts.main')
 
 @section('content')
-
-<section class="content">
 	<div class='row'>
-	    <div class='col-md-12'>
-		    <div class="box box-primary">
+	    <div class='col-md-6'>321</div>
+	    <div class='col-md-6'>123
+		    <!-- <div class="box box-primary">
 	            <div class="box-header with-border">
 					<h3 class="box-title">{{ trans('room.typeMgr') }}</h3>
 
@@ -28,14 +27,12 @@
 							    	{{ $products[$pId]->description }}
 							    </span>
 							</div>
-		                </li>	
+		                </li>
 	              	@endforeach
 	              	</ul>
-	            </div>
+	            </div> -->
           	</div>
 	    </div>
 	</div>
-</section>
-
 @endsection
 

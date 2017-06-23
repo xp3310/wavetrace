@@ -1,4 +1,13 @@
 
+	header.main-header {}
+		header.main-header a { text-decoration: none }
+
+	aside.main-sidebar 	{ position: absolute; top: 60px; bottom: 0; left: 0; width: 250px; background-color: #eef1f6;  }
+		.main-sidebar a { text-decoration: none }
+
+	.content-wrapper { margin-left: 250px; padding: 30px  }
+
+
 .adminMediaEdit {}
 	.adminMediaEdit .gridArea { list-style:none; }
 		.adminMediaEdit .gridArea .gridItem { display:inline-block; position:relative; vertical-align:bottom; width:150px; height:110px; padding:5px; border:1px solid #AAA; }
