@@ -11,7 +11,7 @@
 		</el-submenu>
 		<el-submenu index="2">
 			<template slot="title"><i class="el-icon-menu"></i>產品管理</template>
-			<el-menu-item index="2-1"><a href="/admin/room">房型管理</a></el-menu-item>
+			<a href="/admin/room"><el-menu-item index="2-1">房型管理</el-menu-item></a>
 			<el-menu-item index="2-2">其他服務、商品</el-menu-item>
 			<el-menu-item index="2-3">優惠方案</el-menu-item>
 		</el-submenu>
