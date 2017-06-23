@@ -48,9 +48,36 @@ class AdminController extends Controller
         $ret = array_merge($defaultInfo, $ret);
         $ret['contactInfo'] = json_decode($ret['contactInfo'], TRUE);
         $ret['socialInfo'] = json_decode($ret['socialInfo'], TRUE);
+// my_print_var($ret);
 
 
-        return view( 'admin.siteInfo', ['sysConfig' => $ret, 'updateUrl' => action('SysConfigController@updateAll')] );
+
+        $myForm = array('id' => 'siteInfoForm',
+                        'field' => ['siteName' => ['label' => trans('admin.siteName'),
+                                                   'type' => 'text',
+                                                   'name' => 'siteName',
+                                                   'value' => $ret['siteName']],
+
+                                    'copyright' => ['label' => trans('admin.copyright'),
+                                                    'type' => 'text',
+                                                    'name' => 'copyright',
+                                                    'value' => $ret['copyright']],
+
+                                    'contactInfo' => ['label' => trans('admin.contactInfo'),
+                                                      'type' => 'textPair',
+                                                      'name' => 'contactInfo',
+                                                      'value' => $ret['contactInfo']],
+
+                                    'socialInfo' => ['label' => trans('admin.socialInfo'),
+                                                     'type' => 'textPair',
+                                                     'name' => 'socialInfo',
+                                                     'value' => $ret['socialInfo']]
+                                   ],
+
+                        'submitUrl' => action('SysConfigController@updateAll'),
+                        'validUrl' => action('SysConfigController@validField'));
+
+        return view( 'admin.siteInfo', ['myForm' => $myForm] );
     }
 
 }

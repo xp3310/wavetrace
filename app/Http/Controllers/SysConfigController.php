@@ -45,5 +45,23 @@ class SysConfigController extends Controller
         echo json_encode( ['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
     }
 
+    public function validField(Request $request) {
+        // $request = $request->all();
+
+        // foreach ($request as $k => $v) {
+        //     if ($k == 'contactInfo') {
+        //         $v = json_encode($v);
+        //     }
+        //     if ($k == 'socialInfo') {
+        //         $v = json_encode($v);
+        //     }
+
+        //     SysConfig::updateOrCreate(['name' => $k],
+        //                               ['name' => $k, 'value' => $v]);
+        // }
+        // echo json_encode( ['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
+    }
+
+
 
 }

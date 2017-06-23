@@ -25,7 +25,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Mylib.php"
+            "app/Mylib/Mylib.php",
+            "app/Mylib/MyForm.php"
         ]
     },
     "scripts": {
