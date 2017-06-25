@@ -40,6 +40,7 @@ Route::post('mediaItem/move', 'MediaItemController@move');
 
 
 Route::post('sys_config/updateAll', 'SysConfigController@updateAll');
+Route::post('sys_config/validField', 'SysConfigController@validField');
 
 
 

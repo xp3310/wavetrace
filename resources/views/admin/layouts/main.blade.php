@@ -8,20 +8,15 @@
 
     {!! Html::style( asset('css/bootstrap.min.css') ) !!}
     {!! Html::style( asset('css/font-awesome.min.css') ) !!}
-    {!! Html::style( asset('css/app.css') ) !!}
-    {!! Html::style( asset('css/AdminLTE.min.css') ) !!}
-    {!! Html::style( asset('css/skin-purple-light.min.css') ) !!}
     {!! Html::style( asset('css/element-ui/index.css') ) !!}
     {!! Html::style( asset('css/reset.css') ) !!}
     {!! Html::style( asset('css/admin.css') ) !!}
     @yield('extCss')
 
 
-
     {!! Html::script( asset('js/jquery-3.2.1.min.js') ) !!}
-    {!! Html::script( asset('js/app.js') ) !!}
-    {!! Html::script( asset('js/app.min.js') ) !!}
-    {!! Html::script( asset('js/adminlte.min.js') ) !!}
+    {!! Html::script( asset('js/vue.min.js') ) !!}
+    {!! Html::script( asset('js/element-ui.js') ) !!}
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -32,8 +27,8 @@
 
     <title>{{trans('m.header')}}</title>
 </head>
-<body class="hold-transition skin-purple-light">
-    <div class="wrapper">
+<body>
+    <div id="app" class="wrapper">
 
         <header class="main-header">@include('admin.layouts.header')</header>
 
@@ -48,4 +43,8 @@
         </footer>
     </div>
 </body>
+<script>
+	var Ctor = Vue.extend({})
+	new Ctor().$mount('#app')
+</script>
 </html>

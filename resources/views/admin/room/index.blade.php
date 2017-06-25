@@ -1,41 +1,39 @@
 @extends('admin.layouts.main')
 
 @section('content')
-
-<section class="content">
-	<div class='row'>
-	    <div class='col-md-12'>
-		    <div class="box box-primary">
-	            <div class="box-header with-border">
-					<h3 class="box-title">{{ trans('room.typeMgr') }}</h3>
-
-					<div class="box-tools pull-right">
-						<button type="button" class="btn btn-default btn-xs" data-widget="create"><i class="fa fa-plus"></i> {{ trans('room.create') }}</button>
-					</div>
-	            </div>
-
-	            <div class="box-body">
-	              	<ul class="products-list product-list-in-box">
-	              	@foreach ($rooms as $pId=>$v)
-	              		<li class="item">
-							<div class="product-img">
-								<img src="dist/img/default-50x50.gif" alt="Room Image">
-							</div>
-							<div class="product-info">
-								<a href="#" class="product-title">{{ $products[$pId]->title }}
-							  	<span class="label label-warning pull-right">${{ $products[$pId]->price }}</span></a>
-							    <span class="product-description">
-							    	{{ $products[$pId]->description }}
-							    </span>
-							</div>
-		                </li>	
-	              	@endforeach
-	              	</ul>
-	            </div>
-          	</div>
-	    </div>
+<div class='content'>
+	<div class="content-header">
+    	<span class="pull-right"><el-button size="small"><i class="fa fa-plus"></i> {{ trans('room.create') }}</el-button></span>
+    	<h3><b>{{ trans('room.typeMgr') }}</b></h3>
 	</div>
-</section>
-
+	<div class="content-body">
+		<div class="roomList ">
+			<ul class="list-group">
+	          	@foreach ($rooms as $pId=>$v)
+	          	 <li class="list-group-item">
+					<div class="media block">
+						<div class="media-left">
+							<img src="dist/img/default-50x50.gif" alt="Room Image">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">
+								<b><a href="#"></a>{{ $products[$pId]->title }}</b>
+								<!-- <el-button size="mini" icon="edit"></el-button> -->
+							</h4>
+							<span class="labels pull-right">
+								<el-tag type="primary">平日 ${{ $products[$pId]->price }}</el-tag>
+								<el-tag type="gray">假日 ${{ $rooms[$pId]->holiday_price }}</el-tag>
+							</span>
+							<div class="product-description">
+						    	{{ $products[$pId]->description }}
+						    </div>
+						</div>
+					</div>
+				</li>
+	          	@endforeach
+			</ul>
+		</div>
+	</div>
+</div>
 @endsection
 
