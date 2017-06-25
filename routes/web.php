@@ -15,14 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/', 	 'AdminController@home')->name('admin');
-Route::get('admin/home', 'AdminController@home')->name('admin');
-Route::get('admin/show', 'AdminController@show');
-Route::get('admin/siteInfo', 'AdminController@siteInfo')->name('admin.siteInfo');
+Route::group(['as' => 'admin.'], function(){
+	
+	Route::get('admin/', 	 'AdminController@home')->name('index');
+	Route::get('admin/home', 'AdminController@home')->name('index');
 
+	Route::get('admin/siteInfo', 'AdminController@siteInfo')->name('siteInfo');
 
-Route::resource('room', 'Admin\RoomController');
-// Route::get('admin/room', 'Admin\RoomController@index')->name('admin.room.index');
+	Route::resource('admin/room', 'Admin\RoomController');
+});
+
 
 
 
