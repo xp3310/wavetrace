@@ -16,13 +16,14 @@ Route::get('/', function () {
 });
 
 Route::group(['as' => 'admin.'], function(){
-	
+
 	Route::get('admin/', 	 'AdminController@home')->name('index');
 	Route::get('admin/home', 'AdminController@home')->name('index');
 
 	Route::get('admin/siteInfo', 'AdminController@siteInfo')->name('siteInfo');
 
-	Route::resource('admin/room', 'Admin\RoomController');
+	Route::resource('admin/room', 	 'Admin\RoomController');
+	Route::resource('admin/product', 'Admin\ProductController');
 });
 
 

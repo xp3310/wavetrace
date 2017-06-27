@@ -25,7 +25,7 @@
     </script>
     @yield('extJs')
 
-    <title>{{trans('m.header')}}</title>
+    <title>{{ trans('admin.site') }}</title>
 </head>
 <body>
     <div id="app" class="wrapper">

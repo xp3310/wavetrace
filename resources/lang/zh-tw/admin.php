@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'site' => '浪痕',
+
     'mgr'           => '管理者',
     'orderCustomer' => '訂單與顧客',
     'siteMgr'       => '網站管理',
@@ -16,5 +18,19 @@ return [
     'social_fb'     => 'facebook',
     'social_ig'     => 'instagram',
     'social_gplus'  => 'google+',
-    'socialUrl'     => '連結網址'
+    'socialUrl'     => '連結網址',
+
+
+
+    'webInfo'		=> '網站資訊',
+    'homeSetting'	=> '首頁設定',
+    'aboutHouse'	=> '關於民宿',
+    'traffic'		=> '交通方式',
+
+    'signout'   	=> '登出',
+    'discounts' 	=> '優惠方案',
+    'userMail'  	=> '顧客信件',
+
+    'holiday' => '假日',
+    'weekday' => '平日',
 ];

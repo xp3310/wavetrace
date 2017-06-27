@@ -21,8 +21,8 @@
 								<!-- <el-button size="mini" icon="edit"></el-button> -->
 							</h4>
 							<span class="labels pull-right">
-								<el-tag type="primary">平日 ${{ $products[$pId]->price }}</el-tag>
-								<el-tag type="gray">假日 ${{ $rooms[$pId]->holiday_price }}</el-tag>
+								<el-tag type="primary">{{ trans('admin.weekday') }} ${{ $products[$pId]->price }}</el-tag>
+								<el-tag type="gray">{{ trans('admin.holiday') }} ${{ $rooms[$pId]->holiday_price }}</el-tag>
 							</span>
 							<div class="product-description">
 						    	{{ $products[$pId]->description }}
