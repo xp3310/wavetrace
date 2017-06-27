@@ -47,14 +47,12 @@
 @yield('vueCustomParam')
 <script>
 
-	var Ctor = Vue.extend({})
-	new Ctor().$mount('#app')
 
     (function(){
-        var customData = customVueData || {},
-            customMethod = customVueMethod || {},
-            vueData = $.extend({}, customVueData),
-            vueMethod = $.extend({}, customVueMethod),
+        var customData = window.customVueData || {},
+            customMethod = window.customVueMethod || {},
+            vueData = $.extend({}, customData),
+            vueMethod = $.extend({}, customMethod),
             Ctor = new Vue({
             el:'#app',
             data: customData,
