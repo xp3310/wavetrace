@@ -46,6 +46,10 @@
 
 @yield('vueCustomParam')
 <script>
+
+	var Ctor = Vue.extend({})
+	new Ctor().$mount('#app')
+
     (function(){
         var customData = customVueData || {},
             customMethod = customVueMethod || {},
@@ -57,7 +61,6 @@
             methods: vueMethod
         })
     })();
-
 
 </script>
 
