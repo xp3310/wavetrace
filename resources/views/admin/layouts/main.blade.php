@@ -43,8 +43,23 @@
         </footer>
     </div>
 </body>
+
+@yield('vueCustomParam')
 <script>
-	var Ctor = Vue.extend({})
-	new Ctor().$mount('#app')
+    (function(){
+        var customData = customVueData || {},
+            customMethod = customVueMethod || {},
+            vueData = $.extend({}, customVueData),
+            vueMethod = $.extend({}, customVueMethod),
+            Ctor = new Vue({
+            el:'#app',
+            data: customData,
+            methods: vueMethod
+        })
+    })();
+
+
 </script>
+
+
 </html>
