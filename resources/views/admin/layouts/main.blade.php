@@ -18,6 +18,7 @@
     {!! Html::script( asset('js/vue.min.js') ) !!}
     {!! Html::script( asset('js/element-ui.js') ) !!}
     {!! Html::script( asset('js/vue-resource.min.js') ) !!}
+    {!! Html::script( asset('js/my.js') ) !!}
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -50,18 +51,7 @@
 
 
     (function(){
-        var customData = window.customVueData || {},
-            customMethod = window.customVueMethod || {},
-            vueData = $.extend({}, customData),
-            vueMethod = $.extend({}, customMethod),
-            Ctor;
-
-        Ctor = new Vue({
-            el:'#app',
-            data: vueData,
-            methods: vueMethod
-        });
-
+        bnb.vue.run();
     })();
 
 </script>

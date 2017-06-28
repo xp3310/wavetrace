@@ -30,38 +30,40 @@
 @section('vueCustomParam')
 <script>
     var customVueData = {
-        form: {
-            siteName: "{{ $sysConfig['siteName'] }}",
-            copyright: "{{ $sysConfig['copyright'] }}",
-            contactInfo:{!! json_encode($sysConfig['contactInfo']) !!},
-            socialInfo:{!! json_encode($sysConfig['socialInfo']) !!}
+            form: {
+                siteName: "{{ $sysConfig['siteName'] }}",
+                copyright: "{{ $sysConfig['copyright'] }}",
+                contactInfo:{!! json_encode($sysConfig['contactInfo']) !!},
+                socialInfo:{!! json_encode($sysConfig['socialInfo']) !!}
+            },
+            loading: false,
         },
-        loading: false,
+        customVueMethod = {
+            onMyFormSubmit() {
+                this.loading = true;
+                this.$http.post('{{ $updateUrl }}', this.form, {'headers': {'X-CSRF-TOKEN': Laravel.csrfToken}} ).then( function(obj) {
 
-    },
-    customVueMethod = {
-        onMyFormSubmit() {
-            this.loading = true;
-            this.$http.post('{{ $updateUrl }}', this.form, {'headers': {'X-CSRF-TOKEN': Laravel.csrfToken}} ).then( function(obj) {
+                    this.loading = false;
+                    this.$message({message: "{{ trans('common.saveSuccess') }}",
+                                   type: 'success'});
+                }, function(e){
 
-                this.loading = false;
-                this.$message({message: "{{ trans('common.saveSuccess') }}",
-                               type: 'success'});
-            }, function(e){
-console.log(e);
+                });
+            },
 
-            });
-        },
-
-        onMyFormCancel() {
-            window.location.reload();
-        },
+            onMyFormCancel() {
+                window.location.reload();
+            },
 
 
-        onAddcontactInfo() {
-            this.form.contactInfo.push( {'label': '', 'value': ''} )
-        }
-    };
+            onAddcontactInfo() {
+                this.form.contactInfo.push( {'label': '', 'value': ''} )
+            }
+        };
+
+
+    bnb.vue.setData(customVueData);
+    bnb.vue.setMethod(customVueMethod);
 
 </script>
 @endsection
