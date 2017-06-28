@@ -50,7 +50,7 @@ class MyForm {
         $field = array_merge($default, $field);
 
         $addBtn = $field['addEnable'] ? "<div class='text-center'>
-                                                <i class='el-icon-plus iconBtn' @click='onAdd{$field['name']}Info'></i>
+                                                <i class='el-icon-plus iconBtn' @click='onAdd{$field['name']}'></i>
                                             </div>"
                                       : '';
 
@@ -64,7 +64,7 @@ class MyForm {
                         &nbsp;
                     </el-col>
                     <el-col :span='15'>
-                        <el-input v-model='{$this->formModel}.contactInfo[key].value' placeholder='{$field['contentPlaceholder']}'>
+                        <el-input v-model='{$this->formModel}.{$field['name']}[key].value' placeholder='{$field['contentPlaceholder']}'>
                         </el-input>
                     </el-col>
                 </div>
