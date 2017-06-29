@@ -32,8 +32,24 @@ class RoomController extends Controller
         ]);
     }
 
-    public function edit() {
+    public function create() {
 
+    	return view('admin.room.edit');
+    }
+
+
+    public function show() {
+
+    }
+
+    public function edit($roomId) {
+    	$room 	 = Room::find($roomId);
+    	$product = Product::find($room->product_id);
+
+    	return view('admin.room.edit', [
+    		'room' 	  => $room,
+    		'product' => $product,
+    	]);
     }
 
     public function update() {

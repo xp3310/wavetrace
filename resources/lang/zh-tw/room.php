@@ -8,4 +8,6 @@ return [
 	'status' 	=> '訂房狀況',
 	'typeMgr' 	=> '房型管理',
 
+	'title' 	=> '房型名稱',
+
 ];
