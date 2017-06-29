@@ -20,10 +20,9 @@ Route::group(['as' => 'admin.'], function(){
 	Route::get('admin/', 	 'AdminController@home')->name('index');
 	Route::get('admin/home', 'AdminController@home')->name('index');
 
-	Route::get('admin/siteInfo', 'AdminController@siteInfo');
-
 	Route::resource('admin/room', 	 'Admin\RoomController');
-	Route::resource('admin/product', 'Admin\ProductController');
+    Route::resource('admin/product', 'Admin\ProductController');
+	Route::resource('admin/sys_config', 'Admin\SysConfigController');
 });
 
 
@@ -40,8 +39,6 @@ Route::post('mediaItem/move', 'MediaItemController@move');
 
 
 
-Route::post('sys_config/updateAll', 'SysConfigController@updateAll');
-Route::post('sys_config/validField', 'SysConfigController@validField');
 
 
 
