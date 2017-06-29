@@ -7,23 +7,23 @@
 @section('content')
 
 <div class='content'>
-	<div class="content-header">
-    	<h3><b>{{ isset($room) ? $product->title : __('room.create') }}</b></h3>
-	</div>
-	<div class="content-body">
-	    <el-card class="box-card">
-	        <div slot="header" class="clearfix">
-	            <span>@lang('admin.siteInfo')</span>
-	        </div>
-		{!! $myFormLib->elFormOpen() !!}
+    <div class="content-body">
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{ isset($room) ? $product->title : trans('room.create') }}</span>
+            </div>
+            {!! $myFormLib->elFormOpen() !!}
 
-            {!! $myFormLib->getElItem( 'text', ['name' => 'title', 			'label' => trans('room.title')		 ] ) !!}
-            {!! $myFormLib->getElItem( 'text', ['name' => 'description', 	'label' => trans('admin.introduction')] ) !!}
-			{!! $myFormLib->getElItem( 'buttons', ['label' => '', 'buttons' => ['submit' => ['buttonTittle' => trans('common.save'), 'buttonType' => 'primary', 'callback' => 'onMyFormSubmit'],
+            {!! $myFormLib->getElItem( 'text', 	   ['name' => 'title',       'label' => trans('room.title')		 ] ) !!}
+            {!! $myFormLib->getElItem( 'textarea', ['name' => 'description', 'label' => trans('m.introduction')] ) !!}
+            {!! $myFormLib->getElItem( 'number', ['name' => 'max_capacity',  'label' => trans('room.maxCnt'), 'min' => 0 ] ) !!}
+            {!! $myFormLib->getElItem( 'number', ['name' => 'price', 		 'label' => trans('room.weekdayPrice'), 'min' => 0 ] ) !!}
+            {!! $myFormLib->getElItem( 'number', ['name' => 'holiday_price', 'label' => trans('room.holidayPrice'), 'min' => 0 ] ) !!}
+            {!! $myFormLib->getElItem( 'buttons', ['label' => '', 'buttons' => ['submit' => ['buttonTittle' => trans('common.save'), 'buttonType' => 'primary', 'callback' => 'onMyFormSubmit'],
                                                                                 'cancal' => ['buttonTittle' => trans('common.cancel'), 'callback' => 'onMyFormCancel'] ] ]  ) !!}
         {!! $myFormLib->elFormClose() !!}
-	    </el-card>
-	</div>
+        </el-card>
+    </div>
 </div>
 @endsection
 
@@ -31,7 +31,11 @@
 @section('vueCustomParam')
 <script>
     var customVueData = {
-        form: {},
+        form: {
+            max_capacity  : {{ isset($room) ? $room->max_capacity  : 0 }},
+            price         : {{ isset($product) ? $product->price   : 0 }},
+            holiday_price : {{ isset($room) ? $room->holiday_price : 0 }},
+        },
         loading: false,
     },
     customVueMethod = {
@@ -40,7 +44,7 @@
         },
 
         onMyFormCancel() {
-            window.location.reload();
+            window.history.back();
         },
 
 

@@ -10,4 +10,6 @@ return [
 
     'holiday' => '假日',
     'weekday' => '平日',
+    
+    'introduction' 	=> '介紹',
 ];
