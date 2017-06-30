@@ -74,8 +74,27 @@ class MyForm {
     public function text($field) {
         $default = ['placeholder' => ''];
         $field = array_merge($default, $field);
+
         return "<el-input placeholder='{$field['placeholder']}' v-model='{$this->formModel}.{$field['name']}'></el-input>";
     }
+
+
+    public function textarea($field) {
+        $default = ['placeholder' => ''];
+        $field = array_merge($default, $field);
+        return "<el-input type='textarea' placeholder='{$field['placeholder']}' v-model='{$this->formModel}.{$field['name']}'></el-input>";
+    }
+
+
+    public function number($field) {
+        $default = ['placeholder' => ''];   
+        $field = array_merge($default, $field);
+
+        $min = isset($field['min']) ? " :min='{$field['min']}' " : "";
+        $max = isset($field['max']) ? " :max='{$field['max']}' " : "";
+        return "<el-input-number v-model='{$this->formModel}.{$field['name']}' {$min} {$max}></el-input-number>";
+    }
+
 
     public function textPair($field) {
         $default = ['addEnable' => TRUE,

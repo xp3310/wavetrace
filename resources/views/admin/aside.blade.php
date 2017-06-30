@@ -13,7 +13,7 @@
 	</el-submenu>
 	<el-submenu index="3">
 		<template slot="title"><i class="el-icon-setting"></i>{{ trans('admin.webInfo') }}</template>
-		<a href="/admin/siteInfo" v-on:click="setSession('menuIndex', '3-1')">	<el-menu-item index="3-1">{{ trans('admin.siteInfo')    }}</el-menu-item></a>
+		<a href="/admin/sys_config" v-on:click="setSession('menuIndex', '3-1')">	<el-menu-item index="3-1">{{ trans('admin.siteInfo')    }}</el-menu-item></a>
 		<a href="/admin"  v-on:click="setSession('menuIndex', '3-2')"><el-menu-item index="3-2">{{ trans('admin.homeSetting') }}</el-menu-item></a>
 		<a href="/admin"  v-on:click="setSession('menuIndex', '3-3')"><el-menu-item index="3-3">{{ trans('admin.aboutHouse')  }}</el-menu-item></a>
 		<a href="/admin"  v-on:click="setSession('menuIndex', '3-4')"><el-menu-item index="3-4">{{ trans('admin.traffic')     }}</el-menu-item></a>

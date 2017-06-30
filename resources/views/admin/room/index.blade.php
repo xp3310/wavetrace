@@ -3,7 +3,7 @@
 @section('content')
 <div class='content'>
 	<div class="content-header">
-    	<span class="pull-right"><el-button size="small"><i class="fa fa-plus"></i> {{ trans('room.create') }}</el-button></span>
+    	<span class="pull-right"><a href="/admin/room/create"><el-button size="small"><i class="fa fa-plus"></i> {{ trans('room.create') }}</el-button></a></span>
     	<h3><b>{{ trans('room.typeMgr') }}</b></h3>
 	</div>
 	<div class="content-body">
@@ -13,12 +13,10 @@
 	          	 <li class="list-group-item">
 					<div class="media block">
 						<div class="media-left">
-							<img src="dist/img/default-50x50.gif" alt="Room Image">
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<b><a href="#"></a>{{ $products[$pId]->title }}</b>
-								<!-- <el-button size="mini" icon="edit"></el-button> -->
+								<b><a href="/admin/room/{{$pId}}/edit">{{ $products[$pId]->title }}</a></b>
 							</h4>
 							<span class="labels pull-right">
 								<el-tag type="primary">{{ trans('admin.weekday') }} ${{ $products[$pId]->price }}</el-tag>
