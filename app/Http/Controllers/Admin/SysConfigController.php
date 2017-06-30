@@ -48,6 +48,8 @@ class SysConfigController extends Controller
 
     public function store(Request $request) {
         $request = $request->all();
+        $error = [];
+
 
         foreach ($request as $k => $v) {
             if ($k == 'contactInfo') {
@@ -60,7 +62,7 @@ class SysConfigController extends Controller
             SysConfig::updateOrCreate(['name' => $k],
                                       ['name' => $k, 'value' => $v]);
         }
-        echo json_encode( ['status' => 'true', 'msg' => 'ok', 'extInfo' => []]);
+        echo json_encode( ['field' => $k, 'status' => 'true', 'msg' => 'ok', 'extInfo' => ['error' => $error]] );
     }
 
 }

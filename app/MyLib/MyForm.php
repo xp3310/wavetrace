@@ -1,10 +1,36 @@
 <?php
 namespace App\Mylib;
 class MyForm {
-    private $formModel;
+    private $formModel,
+            $formData,
+            $submitBtnTxt,
+            $cancelBtnTxt;
 
     public function __construct($formModel = '') {
         $this->formModel=$formModel;
+        $this->formData = [];
+
+        $this->submitBtnTxt = trans('m.confirm');
+        $this->cancelBtnTxt = trans('m.cancel');
+    }
+
+    public function setFormData($k, $v) {
+        $this->formData[$k] = $v;
+    }
+
+    public function getFormData($k = '') {
+        if ($k == '') {
+            return $this->formData;
+        }
+        return $this->formData[$k];
+    }
+
+    public function getModelName() {
+        return $this->formModel;
+    }
+
+    public function setSubmitBtnText($text) {
+        $this->submitBtnTxt = $text;
     }
 
 
@@ -24,10 +50,20 @@ class MyForm {
     }
 
 
-    public function getElItem($type, $field) {
+    /* if has field name means that is a form data */
+    public function elItem($type, $field) {
 
+        $defaultField = ['name' => '','value' => ''];
+        $field = array_merge($defaultField, $field);
+
+        $error = '';
+        if ( $field['name'] != '' ) {
+            $error = ":error='error.{$field['name']}'";
+
+            $this->setFormData($field['name'], $field['value']);
+        }
         return "
-                <el-form-item label='{$field['label']}'>" .
+                <el-form-item label='{$field['label']}' {$error}>" .
                     call_user_func( array($this, "{$type}"), $field ) . "
                 </el-form-item>
                 ";
@@ -49,8 +85,9 @@ class MyForm {
 
         $field = array_merge($default, $field);
 
+        // dd($field['name']);
         $addBtn = $field['addEnable'] ? "<div class='text-center'>
-                                                <i class='el-icon-plus iconBtn' @click='onAdd{$field['name']}'></i>
+                                                <i class='el-icon-plus iconBtn' @click=onAddTextPairInfo('{$field['name']}')></i>
                                             </div>"
                                       : '';
 
@@ -83,12 +120,36 @@ class MyForm {
         return implode('', $btns);
     }
 
+    public function defaultFormBtns() {
+        $btns = ['submit' => $this->submitButton(),
+                 'cancel' => $this->cancelButton()];
+
+        return implode('', $btns);
+    }
+
+
+
+
+
+
     public function button($field) {
 
-            $default = ['buttonTittle' => '',
-                        'buttonType' => ''];
-            $field = array_merge($default, $field);
-            return "<el-button type='{$field['buttonType']}' @click='{$field['callback']}'>{$field['buttonTittle']}</el-button>";
+        $default = ['buttonTittle' => '',
+                    'buttonType' => ''];
+        $field = array_merge($default, $field);
+        return "<el-button type='{$field['buttonType']}' @click='{$field['callback']}'>{$field['buttonTittle']}</el-button>";
+    }
+
+    public function submitButton() {
+        return $this->button(['buttonTittle' => $this->submitBtnTxt,
+                              'buttonType' => 'primary',
+                              'callback' => 'onMyFormSubmit']);
+    }
+
+    public function cancelButton() {
+        return $this->button(['buttonTittle' => $this->cancelBtnTxt,
+                              'buttonType' => '',
+                              'callback' => 'onMyFormCancel']);
     }
 
 }

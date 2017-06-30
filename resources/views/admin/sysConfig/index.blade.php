@@ -13,12 +13,11 @@
         </div>
         {!! $myFormLib->elFormOpen() !!}
 
-            {!! $myFormLib->getElItem( 'text', ['name' => 'siteName', 'label' => trans('admin.siteName'), 'placeholder' => ''] ) !!}
-            {!! $myFormLib->getElItem( 'text', ['name' => 'copyright', 'label' => trans('admin.copyright'), 'placeholder' => ''] ) !!}
-            {!! $myFormLib->getElItem( 'textPair', ['name' => 'contactInfo', 'label' => trans('admin.contactInfo')] ) !!}
-            {!! $myFormLib->getElItem( 'textPair', ['name' => 'socialInfo', 'label' => trans('admin.socialInfo'), 'addEnable' => FALSE, 'labelInputDisable' => TRUE ]  ) !!}
-            {!! $myFormLib->getElItem( 'buttons', ['label' => '', 'buttons' => ['submit' => ['buttonTittle' => trans('common.save'), 'buttonType' => 'primary', 'callback' => 'onMyFormSubmit'],
-                                                                                'cancal' => ['buttonTittle' => trans('common.cancel'), 'callback' => 'onMyFormCancel'] ] ]  ) !!}
+            {!! $myFormLib->elItem( 'text', ['name' => 'siteName', 'value' => $sysConfig['siteName'], 'label' => trans('admin.siteName'), 'placeholder' => ''] ) !!}
+            {!! $myFormLib->elItem( 'text', ['name' => 'copyright', 'value' => $sysConfig['copyright'], 'label' => trans('admin.copyright'), 'placeholder' => ''] ) !!}
+            {!! $myFormLib->elItem( 'textPair', ['name' => 'contactInfo', 'value' => $sysConfig['contactInfo'], 'label' => trans('admin.contactInfo')] ) !!}
+            {!! $myFormLib->elItem( 'textPair', ['name' => 'socialInfo', 'value' => $sysConfig['socialInfo'], 'label' => trans('admin.socialInfo'), 'addEnable' => FALSE, 'labelInputDisable' => TRUE ]  ) !!}
+            {!! $myFormLib->elItem( 'defaultFormBtns', ['label' => ''] ) !!}
 
         {!! $myFormLib->elFormClose() !!}
     </el-card>
@@ -29,42 +28,9 @@
 
 @section('vueCustomParam')
 <script>
-    var customVueData = {
-            form: {
-                siteName: "{{ $sysConfig['siteName'] }}",
-                copyright: "{{ $sysConfig['copyright'] }}",
-                contactInfo:{!! json_encode($sysConfig['contactInfo']) !!},
-                socialInfo:{!! json_encode($sysConfig['socialInfo']) !!}
-            },
-            loading: false,
-        },
-        customVueMethod = {
-            onMyFormSubmit() {
-                this.loading = true;
-                this.$http.post('{{ $updateUrl }}', this.form, {'headers': {'X-CSRF-TOKEN': Laravel.csrfToken}} ).then( function(obj) {
-
-                    this.loading = false;
-                    this.$message({message: "{{ trans('common.saveSuccess') }}",
-                                   type: 'success'});
-                }, function(e){
-
-                });
-            },
-
-            onMyFormCancel() {
-                window.location.reload();
-            },
-
-
-            onAddcontactInfo() {
-                this.form.contactInfo.push( {'label': '', 'value': ''} )
-            }
-        };
-
-
-    bnb.vue.setData(customVueData);
-    bnb.vue.setMethod(customVueMethod);
-
+    var fieldData = {!! json_encode($myFormLib->getFormData()) !!};
+    bnb.form.init(fieldData, '{{ $myFormLib->getModelName() }}', '{{ $updateUrl }}');
+    bnb.form.run();
 </script>
 @endsection
 
