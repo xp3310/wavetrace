@@ -42,7 +42,7 @@ class MyForm {
 
         $attrStr = implode(' ', $attrStr);
 
-        return "<el-form ref='{$this->formModel}' :model='{$this->formModel}' label-width='{$labelWidth}' {$attrStr}>";
+        return "<el-form id='form' ref='{$this->formModel}' :model='{$this->formModel}' label-width='{$labelWidth}' {$attrStr}>";
     }
 
     public function elFormClose() {
@@ -87,7 +87,7 @@ class MyForm {
 
 
     public function number($field) {
-        $default = ['placeholder' => ''];   
+        $default = ['placeholder' => ''];
         $field = array_merge($default, $field);
 
         $min = isset($field['min']) ? " :min='{$field['min']}' " : "";

@@ -1,51 +1,26 @@
-var bnb = bnb || {};
-bnb.vue = (function(){
-    var _data = {menuIndex: sessionStorage.getItem('menuIndex') || '2-1'},
-        _method = {},
-        _id='#app',
-        _vm;
+var form = form || {};
+form = (function(){
 
-    return {
-        setData: function(data) {
-            $.extend(_data, data);
-        },
+    var _vueMethod = {},
+        _vueData = {},
+        _id='#form',
+        _fm
 
-        setMethod: function(method) {
-            $.extend(_method, method);
-        },
-
-        run: function() {
-
-            this.setMethod({
-            	setSession : function(name, data) {
-                	sessionStorage.setItem(name, data);
-                },
-
-                getSession : function(name) {
-                	return sessionStorage.getItem(name);
-                }
-            });
-
-// alert('my');
-
-            _vm = new Vue({
-                el: _id,
-                data: _data,
-                methods: _method
-            });
-        }
-    }
-})();
-
-
-bnb.form = (function(){
     var _updateUrl,
         _formName,
-        _fieldData,
-        _vueMethod = {},
-        _vueData = {}
+        _fieldData;
+
 
     return {
+
+        run: function() {
+            _fm = new Vue({
+                el: _id,
+                data: _vueData,
+                methods: _vueMethod
+            });
+        },
+
         init: function(fieldData, formName, updateUrl) {
             _fieldData = fieldData;
             _formName = formName;
@@ -56,10 +31,10 @@ bnb.form = (function(){
                 loading: false,
                 error: {}
             }
+
             $.each(_vueData.form, function(i, v){
                 _vueData.error[i] = '';
             });
-
 
             _vueMethod = {
                 onMyFormSubmit() {
@@ -100,20 +75,7 @@ bnb.form = (function(){
                 }
 
             }
-        },
 
-        getVueData: function() {
-            return _vueData;
-        },
-
-        getVueMethod: function() {
-            return _vueMethod;
-        },
-
-        run: function() {
-            bnb.vue.setData(_vueData);
-            bnb.vue.setMethod(_vueMethod);
         }
-
     }
 })();
