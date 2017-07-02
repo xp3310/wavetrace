@@ -19,8 +19,8 @@
 								<b><a href="/admin/room/{{$pId}}/edit">{{ $products[$pId]->title }}</a></b>
 							</h4>
 							<span class="labels pull-right">
-								<el-tag type="primary">{{ trans('admin.weekday') }} ${{ $products[$pId]->price }}</el-tag>
-								<el-tag type="gray">{{ trans('admin.holiday') }} ${{ $rooms[$pId]->holiday_price }}</el-tag>
+								<el-tag type="primary">{{ trans('m.weekday') }} ${{ $products[$pId]->price }}</el-tag>
+								<el-tag type="gray">{{ trans('m.holiday') }} ${{ $rooms[$pId]->holiday_price }}</el-tag>
 							</span>
 							<div class="product-description">
 						    	{{ $products[$pId]->description }}

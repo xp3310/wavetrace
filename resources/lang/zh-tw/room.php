@@ -14,4 +14,6 @@ return [
     'weekdayPrice'  => '平日價錢',
     'holidayPrice'  => '假日價錢',
 
+    'roomPhoto'  => '房間照片',
+
 ];
