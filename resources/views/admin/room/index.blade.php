@@ -1,14 +1,14 @@
 @extends('admin.layouts.main')
 
 @section('content')
-<div class='content'>
+<div id='content'>
 	<div class="content-header">
     	<span class="pull-right"><a href="/admin/room/create"><el-button size="small"><i class="fa fa-plus"></i> {{ trans('room.create') }}</el-button></a></span>
     	<h3><b>{{ trans('room.typeMgr') }}</b></h3>
 	</div>
 	<div class="content-body">
 		<div class="roomList ">
-			<ul class="list-group">
+			<ul class="list-group-item">
 	          	@foreach ($rooms as $pId=>$v)
 	          	 <li class="list-group-item">
 					<div class="media block">
@@ -33,5 +33,11 @@
 		</div>
 	</div>
 </div>
+<script>
+// (function(){
+	bnb.vue.run('#content');
+// })();
+</script>
 @endsection
+
 

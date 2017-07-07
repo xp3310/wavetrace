@@ -1,11 +1,38 @@
 var bnb = bnb || {};
-bnb.vue = (function(){
-    var _data = {menuIndex: sessionStorage.getItem('menuIndex') || '2-1'},
+
+bnb.say = function(){
+
+    return {
+        hello: function() {
+            alert('hello');
+        }
+    }
+}();
+
+bnb.session = function(){
+
+    return {
+
+        set: function(name, data) {
+            console.log(name, data);
+            sessionStorage.setItem(name, data);
+        },
+
+        get: function(name) {
+            return sessionStorage.getItem(name);
+        }
+    }
+
+}();
+
+bnb.vue = function(){
+    var _data = {},
         _method = {},
-        _id='#app',
+        _id='',
         _vm;
 
     return {
+
         setData: function(data) {
             $.extend(_data, data);
         },
@@ -14,19 +41,9 @@ bnb.vue = (function(){
             $.extend(_method, method);
         },
 
-        run: function() {
+        run: function(id) {
 
-            this.setMethod({
-            	setSession : function(name, data) {
-                	sessionStorage.setItem(name, data);
-                },
-
-                getSession : function(name) {
-                	return sessionStorage.getItem(name);
-                }
-            });
-
-// alert('my');
+            _id = id;
 
             _vm = new Vue({
                 el: _id,
@@ -35,85 +52,6 @@ bnb.vue = (function(){
             });
         }
     }
-})();
+}();
 
-
-bnb.form = (function(){
-    var _updateUrl,
-        _formName,
-        _fieldData,
-        _vueMethod = {},
-        _vueData = {}
-
-    return {
-        init: function(fieldData, formName, updateUrl) {
-            _fieldData = fieldData;
-            _formName = formName;
-            _updateUrl = updateUrl;
-
-            _vueData = {
-                form: _fieldData,
-                loading: false,
-                error: {}
-            }
-            $.each(_vueData.form, function(i, v){
-                _vueData.error[i] = '';
-            });
-
-
-            _vueMethod = {
-                onMyFormSubmit() {
-                    var that = this;
-                    that.loading = true;
-                    that.$http.post(_updateUrl, that.form, {'headers': {'X-CSRF-TOKEN': Laravel.csrfToken}} ).then( function(obj) {
-                        that.clearError();
-                        that.loading = false;
-                        if (obj.body.status == 'false') {
-                            $.each(obj.body.extInfo.error, function(k, v) {
-                                that.error[k] = v;
-                            })
-                        }
-
-                        if (obj.body.status == 'true') {
-                            that.$message({message: "{{ trans('common.saveSuccess') }}",
-                                           type: 'success'});
-                        }
-                    }, function(e){
-
-                    });
-                },
-
-                onMyFormCancel() {
-                    window.location.reload();
-                },
-
-
-                onAddTextPairInfo(textPairName) {
-                    this.form[textPairName].push( {'label': '', 'value': ''} )
-                },
-
-                clearError() {
-                    var that = this;
-                    $.each(that.error, function(k, v) {
-                        that.error[k] = '';
-                    })
-                }
-
-            }
-        },
-
-        getVueData: function() {
-            return _vueData;
-        },
-
-        getVueMethod: function() {
-            return _vueMethod;
-        },
-
-        run: function() {
-            bnb.vue.setData(_vueData);
-            bnb.vue.setMethod(_vueMethod);
-        }
-
-    }
-})();
+console.log(bnb.say);

@@ -25,10 +25,8 @@
             {!! $form->elItem('number',   ['name' => 'holiday_price','value' => isset($room)    ? $room->holiday_price : '', 
             'label' => trans('room.holidayPrice'), 'min' => 0 ] ) !!}
             
-            {!! $form->elItem('buttons', ['label' => '', 'buttons' => [
-                'submit' => ['buttonTittle' => trans('common.save'), 'buttonType' => 'primary', 'callback' => 'onMyFormSubmit'],
-                'cancal' => ['buttonTittle' => trans('common.cancel'), 'callback' => 'onMyFormCancel'] 
-            ] ] ) !!}
+            {!! $form->elItem( 'defaultFormBtns', ['label' => ''] ) !!}
+            
         {!! $form->elFormClose() !!}
     </el-card>
 </div>
@@ -40,7 +38,7 @@
 <script>
     var fieldData = {!! json_encode($form->getFormData()) !!};
 
-    form.init(fieldData, '{{ $form->getModelName() }}', '{{ route("admin.sys_config.store") }}');
+    form.init(fieldData, '{{ $form->getModelName() }}', '{{ route("admin.room.store") }}');
     form.run();
 </script>
 @endsection

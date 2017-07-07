@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Validator;
 
+use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
 
 use App\Room,
@@ -58,8 +60,9 @@ class RoomController extends Controller
 
     }
 
-    public function store(Request $request) {
-        echo json_encode(['status' => 'false', 'msg' => 'ok', 'extInfo' => ['error' => ['title' => 'dont zzz'] ]]);
+    public function store(Request\StoreRoomRequest $request) {
+
+        dd($request);
 
     }
 
