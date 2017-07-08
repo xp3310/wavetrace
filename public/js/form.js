@@ -29,7 +29,7 @@ form = (function(){
             _vueData = {
                 form: _fieldData,
                 loading: false,
-                error: {}
+                error: {},
             }
 
             $.each(_vueData.form, function(i, v){
@@ -43,15 +43,18 @@ form = (function(){
                     that.$http.post(_updateUrl, that.form, {'headers': {'X-CSRF-TOKEN': Laravel.csrfToken}} ).then( function(obj) {
                         that.clearError();
                         that.loading = false;
-                        if (obj.body.status == 'false') {
+
+                        if (obj.body.status == false) {
                             $.each(obj.body.extInfo.error, function(k, v) {
                                 that.error[k] = v;
                             })
                         }
 
-                        if (obj.body.status == 'true') {
+                        if (obj.body.status == true) {
                             that.$message({message: "{{ trans('common.saveSuccess') }}",
                                            type: 'success'});
+
+                            if ( obj.body.redirect != undefined ) window.location.href = obj.body.redirect;
                         }
                     }, function(e){
 
@@ -59,7 +62,8 @@ form = (function(){
                 },
 
                 onMyFormCancel() {
-                    window.location.reload();
+                    window.history.back();
+                    // window.location.reload();
                 },
 
 

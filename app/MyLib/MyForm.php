@@ -22,6 +22,7 @@ class MyForm {
         if ($k == '') {
             return $this->formData;
         }
+
         return $this->formData[$k];
     }
 
@@ -59,7 +60,6 @@ class MyForm {
         $error = '';
         if ( $field['name'] != '' ) {
             $error = ":error='error.{$field['name']}'";
-
             $this->setFormData($field['name'], $field['value']);
         }
         return "
@@ -75,7 +75,7 @@ class MyForm {
         $default = ['placeholder' => ''];
         $field = array_merge($default, $field);
 
-        return "<el-input placeholder='{$field['placeholder']}' v-model='{$this->formModel}.{$field['name']}'></el-input>";
+        return "<el-input name='{$field['name']}' placeholder='{$field['placeholder']}' v-model='{$this->formModel}.{$field['name']}'></el-input>";
     }
 
 

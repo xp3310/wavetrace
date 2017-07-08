@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model {
 
 	protected $table = 'room';
+    protected $guarded = ['id'];
 	public $timestamps = true;
 
 }

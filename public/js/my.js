@@ -1,14 +1,5 @@
 var bnb = bnb || {};
 
-bnb.say = function(){
-
-    return {
-        hello: function() {
-            alert('hello');
-        }
-    }
-}();
-
 bnb.session = function(){
 
     return {
@@ -53,5 +44,3 @@ bnb.vue = function(){
         }
     }
 }();
-
-console.log(bnb.say);

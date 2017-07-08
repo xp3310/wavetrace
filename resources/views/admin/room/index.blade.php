@@ -8,7 +8,7 @@
 	</div>
 	<div class="content-body">
 		<div class="roomList ">
-			<ul class="list-group-item">
+			<ul class="list-group">
 	          	@foreach ($rooms as $pId=>$v)
 	          	 <li class="list-group-item">
 					<div class="media block">
@@ -34,9 +34,9 @@
 	</div>
 </div>
 <script>
-// (function(){
+(function(){
 	bnb.vue.run('#content');
-// })();
+})();
 </script>
 @endsection
 

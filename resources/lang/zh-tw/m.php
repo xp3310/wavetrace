@@ -17,6 +17,8 @@ return [
     'save' => '儲存',
     'saveSuccess' => '儲存成功',
     'success' => '成功',
-    
+
     'introduction' 	=> '介紹',
+
+    'required' => '不可空白',
 ];

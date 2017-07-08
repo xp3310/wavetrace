@@ -62,6 +62,7 @@ class SysConfigController extends Controller
             SysConfig::updateOrCreate(['name' => $k],
                                       ['name' => $k, 'value' => $v]);
         }
+
         echo json_encode( ['field' => $k, 'status' => 'true', 'msg' => 'ok', 'extInfo' => ['error' => $error]] );
     }
 
