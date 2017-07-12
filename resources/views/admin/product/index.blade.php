@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
 
 @section('content')
-<div class='content'>
+<div id='content'>
 	<div class="content-header">
-    	<span class="pull-right"><el-button size="small"><i class="fa fa-plus"></i> {{ trans('product.create') }}</el-button></span>
+    	<span class="pull-right"><a href="{{ route('admin.product.create') }}"><el-button size="small"><i class="fa fa-plus"></i> {{ trans('product.create') }}</el-button></span>
     	<h3><b>{{ trans('product.mgr') }}</b></h3>
 	</div>
 	<div class="content-body">
@@ -17,7 +17,7 @@
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<b><a href="#"></a>{{ $products[$pId]->title }}</b>
+								<b><a href="{{ route('admin.product.edit', $pId) }}"></a>{{ $products[$pId]->title }}</b>
 								<!-- <el-button size="mini" icon="edit"></el-button> -->
 							</h4>
 							<div class="product-description">
@@ -31,4 +31,9 @@
 		</div>
 	</div>
 </div>
+<script>
+(function(){
+    bnb.vue.run('#content');
+})();
+</script>
 @endsection

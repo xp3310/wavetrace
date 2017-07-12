@@ -25,12 +25,21 @@ class ProductController extends Controller
         ]);
     }
 
-    public function edit() {
+    public function edit( $id ) {
 
+        $product = Product::find($id);
+
+        return view('admin.product.edit', [
+            'product' => $product
+        ]);
     }
 
     public function update() {
 
+    }
+
+    public function create() {
+        return view('admin.product.edit');
     }
 
 }

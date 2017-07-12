@@ -30,7 +30,6 @@ class RoomController extends Controller
             $products[ $v->id ] = $v;
         }
 
-
         return view('admin.room.index', [
             'rooms'     => $rooms,
             'products'  => $products
