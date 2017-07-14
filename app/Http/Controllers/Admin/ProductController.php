@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Product,
     App\Media,
@@ -38,8 +39,25 @@ class ProductController extends Controller
 
     }
 
-    public function create() {
+    public function create(Request $request) {
         return view('admin.product.edit');
+    }
+
+    public function store(Request $request) {
+
+        if ( !isset($request['id']) ) {
+
+            $product = Product::create([
+                'title'       => $request['title'],
+                'description' => $request['description'],
+                'price'       => $request['price'],
+                'media_id'       => 1,
+                'type'           => 2,
+            ]);
+
+        }
+
+        return json_encode(['status' => true, 'msg' => 'ok', 'redirect' => route('admin.product.index')]);
     }
 
 }

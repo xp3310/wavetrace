@@ -11,6 +11,8 @@ return [
     'holiday' => '假日',
     'weekday' => '平日',
 
+    'price'   => '價錢',
+
     'submit' => '送出',
     'confirm' => '確定',
     'cancel' => '取消',

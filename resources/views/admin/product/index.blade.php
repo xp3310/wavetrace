@@ -17,7 +17,7 @@
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<b><a href="{{ route('admin.product.edit', $pId) }}"></a>{{ $products[$pId]->title }}</b>
+								<a href="{{ route('admin.product.edit', $pId) }}"><b>{{ $products[$pId]->title }}</b></a>
 								<!-- <el-button size="mini" icon="edit"></el-button> -->
 							</h4>
 							<div class="product-description">

@@ -60,6 +60,7 @@ class RoomController extends Controller
 
     }
 
+
     // public function store(Requests\StoreRoomRequest $request) {
     public function store(Request $request) {
 
