@@ -11,10 +11,19 @@
 			<ul class="list-group">
 	          	@foreach ($products as $pId=>$v)
 	          	 <li class="list-group-item">
+                 <el-row :gutter="12">
 					<div class="media block">
+                        <el-col :span="3">
 						<div class="media-left">
-							<img src="dist/img/default-50x50.gif" alt="Goods">
+                            @if ( $v->media_id != 0 )
+    							<img style="width: 80px;" src="{{ $items[$v->media_id] }}" alt="Goods">
+                            @else
+                                <el-button list-type="picture-card"><i style="width: 50px;" class="el-icon-plus"></i></el-button>
+                            @endif
+
 						</div>
+                        </el-col>
+                        <el-col :span="9">
 						<div class="media-body">
 							<h4 class="media-heading">
 								<a href="{{ route('admin.product.edit', $pId) }}"><b>{{ $products[$pId]->title }}</b></a>
@@ -24,7 +33,9 @@
 						    	{{ $products[$pId]->description }}
 						    </div>
 						</div>
+                        </el-col>
 					</div>
+                </el-row>
 				</li>
 	          	@endforeach
 			</ul>
@@ -33,7 +44,7 @@
 </div>
 <script>
 (function(){
-    bnb.vue.run('#content');
-})();
+    bnb.vue.run('#content')
+;})();
 </script>
 @endsection

@@ -15,11 +15,11 @@
 
 
     {!! Html::script( asset('js/jquery-3.2.1.min.js') ) !!}
-    {!! Html::script( asset('js/my.js') ) !!}
     {!! Html::script( asset('js/vue.min.js') ) !!}
     {!! Html::script( asset('js/element-ui.js') ) !!}
     {!! Html::script( asset('js/vue-resource.min.js') ) !!}
     {!! Html::script( asset('js/form.js') ) !!}
+    {!! Html::script( asset('js/my.js') ) !!}
 
     <script>
         window.Laravel = <?php echo json_encode([
