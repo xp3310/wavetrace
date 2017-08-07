@@ -12,7 +12,7 @@ use App\SysConfig,
 class SysConfigController extends Controller
 {
     public function index() {
-        // test
+
     	$sysCfgObj = SysConfig::all();
 
         $socialInfoDefault = array();
