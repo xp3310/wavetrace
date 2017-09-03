@@ -15,7 +15,7 @@
 
             {!! $myFormLib->elItem( 'text', ['name' => 'siteName', 'value' => $sysConfig['siteName'], 'label' => trans('admin.siteName'), 'placeholder' => ''] ) !!}
             {!! $myFormLib->elItem( 'text', ['name' => 'copyright', 'value' => $sysConfig['copyright'], 'label' => trans('admin.copyright'), 'placeholder' => ''] ) !!}
-            {!! $myFormLib->elItem( 'textPair', ['name' => 'contactInfo', 'value' => $sysConfig['contactInfo'], 'label' => trans('admin.contactInfo')] ) !!}
+            {!! $myFormLib->elItem( 'textPair', ['name' => 'contactInfo', 'value' => $sysConfig['contactInfo'], 'label' => trans('admin.contactInfo'), 'deleteEnable' => TRUE] ) !!}
             {!! $myFormLib->elItem( 'textPair', ['name' => 'socialInfo', 'value' => $sysConfig['socialInfo'], 'label' => trans('admin.socialInfo'), 'addEnable' => FALSE, 'labelInputDisable' => TRUE ]  ) !!}
             {!! $myFormLib->elItem( 'defaultFormBtns', ['label' => ''] ) !!}
 

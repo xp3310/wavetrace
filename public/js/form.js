@@ -71,6 +71,9 @@ form = (function(){
                     this.form[textPairName].push( {'label': '', 'value': ''} )
                 },
 
+                onRemoveInfo(textPairName, key) {
+                    this.form[textPairName].splice(key, 1);
+                },
                 clearError() {
                     var that = this;
                     $.each(that.error, function(k, v) {

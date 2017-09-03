@@ -98,6 +98,7 @@ class MyForm {
 
     public function textPair($field) {
         $default = ['addEnable' => TRUE,
+                    'deleteEnable' => FALSE,
                     'labelInputDisable' => FALSE,
                     'labelPlaceholder' => '',
                     'contentPlaceholder' => ''];
@@ -109,6 +110,8 @@ class MyForm {
                                                 <i class='el-icon-plus iconBtn' @click=onAddTextPairInfo('{$field['name']}')></i>
                                             </div>"
                                       : '';
+
+        $deleteBtn = $field['deleteEnable'] ? "<i class='el-icon-close iconBtn' @click=\"onRemoveInfo('{$field['name']}', key)\"></i>" : '';
 
         $labelInputDisable = $field['labelInputDisable'] ? ":disabled='true'" : '';
         return "<div class='inputGroupItem clearfix' v-for='(element, key) in form.{$field['name']}'>
@@ -123,6 +126,7 @@ class MyForm {
                         <el-input v-model='{$this->formModel}.{$field['name']}[key].value' placeholder='{$field['contentPlaceholder']}'>
                         </el-input>
                     </el-col>
+                    {$deleteBtn}
                 </div>
                 {$addBtn}
                 ";
