@@ -53,6 +53,10 @@ class SysConfigController extends Controller
 
         foreach ($request as $k => $v) {
             if ($k == 'contactInfo') {
+                $v = collect($v)->filter(function ($item) {
+                    return (!empty($item['label']) and !empty($item['value']));
+                });
+
                 $v = json_encode($v);
             }
             if ($k == 'socialInfo') {
