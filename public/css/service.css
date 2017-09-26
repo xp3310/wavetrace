@@ -1,0 +1,32 @@
+#home {}
+    #home .header { height: 100vh }
+        #home .header .bg         { position:absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('../imgs/banner.jpg'); background-size: cover; height: 100%; z-index: -1 }
+        #home .header .bannerMask { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.1); z-index: 0 }
+        #home .header .top        { position: absolute; top: 48px; left: 80px; right: 80px; height: 54px; z-index: 200 !important }
+            #home .header .top .logo   { width: 22%; float: left   }
+            #home .header .top ul.menu li{ display: inline-block; position: relative; padding: 0 12px; }
+            #home .header .top ul.menu   { list-style: none;  padding: 12px 36px 0 0; text-align: right }
+            #home .header .top ul.menu li{ display: inline-block; position: relative; padding: 0 12px; }
+                #home .header .top ul.menu li a{ font-size: 18px; color: #fff; text-decoration: none; letter-spacing: 2px; line-height: 1.3; cursor: pointer; }
+                #home .header .top ul.menu li a:hover:after{  content: '';  background: url("../imgs/menu_UnderStroke.png");   background-repeat:no-repeat;  background-position: center center;  background-size: cover;  height: 12px;  width: 100px;  position: absolute;  top: 25px;  left: 5px;  opacity: 0.7;  z-index: 0; }
+
+    #home {}
+        #home .about {}
+            #home .about .title { padding: 24px 0; text-align: center; color: #333; font-size: 30px; letter-spacing: 2px; line-height: 1.4 }
+            #home .about .pic { }
+                #home .about .pic .left  { width:50%; height: 300px; float: left; background-image: url('../imgs/bg_home_left.jpg') }
+                #home .about .pic .right { width:50%; height: 300px; float: right; background-image: url('../imgs/bg_home_right.jpg') }
+                
+                #home .about .photos  { padding: 24px 0; }
+                #home .about .photos .aboutText { margin: 12px 0 36px 0; text-align: center; color: #333; font-size: 18px; letter-spacing: 2px; line-height: 1.4;  }
+                
+
+    #home footer {  }
+        #home footer .siteInfo          { padding: 48px 0;  background: #f1f1f1; box-shadow: 0 6px 5px rgba(0,0,0,.1); z-index: 5  }
+        #home footer .siteInfo .logo    { width:30%; padding: 1px 47px; display: inline-block;  }
+        #home footer .siteInfo .info    { width:70%; float: right; }
+        #home footer .siteInfo .info .footerBox { width: 50%; float: right;  padding: 0 48px; vertical-align: top; background: #f1f1f1; color: #333; font-size: 16px; letter-spacing: 0; }
+            #home footer .siteInfo .footerBox .title { padding-bottom: 6px; margin-bottom: 12px; border-bottom: 1px solid #c9c9c9;   }
+            #home footer .siteInfo .footerBox .icon  { height: 40px; width: 40px; margin-right: 24px  }
+
+
